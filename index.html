@@ -13,9 +13,11 @@ body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);overfl
 body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,245,255,0.012) 2px,rgba(0,245,255,0.012) 4px);pointer-events:none;z-index:0}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,10,18,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:52px;flex-wrap:wrap;gap:8px}
 .nav-logo{font-family:'Space Mono',monospace;color:var(--cyan);font-size:13px;letter-spacing:2px}
-.nav-links{display:flex;gap:1.5rem}
+.nav-links{display:flex;gap:1.5rem;align-items:center}
 .nav-links a{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);text-decoration:none;letter-spacing:1px;cursor:pointer;transition:color .2s}
 .nav-links a:hover{color:var(--cyan)}
+.social-link{color:var(--cyan)!important;border:1px solid rgba(0,245,255,0.3);padding:2px 8px;border-radius:2px}
+.social-link:hover{background:rgba(0,245,255,0.1)}
 .nav-badge{display:flex;align-items:center;gap:6px;background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.3);color:#00ff88;font-family:'Space Mono',monospace;font-size:10px;padding:3px 10px;letter-spacing:1px}
 .dot{width:6px;height:6px;background:#00ff88;border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,.5)}50%{box-shadow:0 0 0 5px rgba(0,255,136,0)}}
@@ -30,9 +32,9 @@ main{padding-top:52px;position:relative;z-index:1}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .hero-desc{color:#7a9ab8;line-height:1.85;max-width:500px;margin-bottom:2.5rem;font-size:14px}
 .hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:3rem}
-.btn-p{background:var(--cyan);color:#000;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;padding:9px 22px;border:none;cursor:pointer;font-weight:700;transition:all .2s}
+.btn-p{background:var(--cyan);color:#000;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;padding:9px 22px;border:none;cursor:pointer;font-weight:700;transition:all .2s;text-decoration:none;display:inline-block}
 .btn-p:hover{background:#fff}
-.btn-s{background:transparent;color:var(--cyan);font-family:'Space Mono',monospace;font-size:11px;padding:9px 22px;border:1px solid var(--cyan);cursor:pointer;transition:all .2s}
+.btn-s{background:transparent;color:var(--cyan);font-family:'Space Mono',monospace;font-size:11px;padding:9px 22px;border:1px solid var(--cyan);cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block}
 .btn-s:hover{background:rgba(0,245,255,0.08)}
 .hero-stats{display:flex;gap:2.5rem;padding-top:2.5rem;border-top:1px solid var(--border);flex-wrap:wrap}
 .stat-num{font-size:1.8rem;font-weight:800;color:var(--cyan);display:block;font-family:'Space Mono',monospace}
@@ -96,10 +98,15 @@ main{padding-top:52px;position:relative;z-index:1}
 .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
 .cert-card{background:var(--bg2);border:1px solid var(--border);padding:1rem;transition:border-color .2s}
 .cert-card:hover{border-color:rgba(167,139,250,0.4)}
+.cert-card.oracle{border:1px solid rgba(0,255,136,0.4);background:rgba(0,255,136,0.02)}
+.cert-card.oracle:hover{border-color:var(--green)}
 .cert-date{font-family:'Space Mono',monospace;font-size:10px;color:var(--purple);opacity:.7;margin-bottom:4px}
+.cert-date.oracle-date{color:var(--green);opacity:1}
 .cert-name{font-size:12px;font-weight:600;margin-bottom:2px;line-height:1.4}
 .cert-org{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted)}
 footer{text-align:center;padding:2.5rem;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);border-top:1px solid var(--border)}
+footer a{color:var(--cyan);text-decoration:none}
+footer a:hover{text-decoration:underline}
 @media(max-width:600px){.nav-links{display:none}.hero{padding:2rem 1.25rem}.section{padding:3rem 1.25rem}#chat{padding:3rem 1.25rem}.hero-stats{gap:1.5rem}}
 </style>
 </head>
@@ -111,7 +118,10 @@ footer{text-align:center;padding:2.5rem;font-family:'Space Mono',monospace;font-
     <a href="#skills">Skills</a>
     <a href="#projects">Projets</a>
     <a href="#parcours">Parcours</a>
+    <a href="#certs">Certifs</a>
     <a href="#chat">IA Chat</a>
+    <a href="https://github.com/sidkizh04" target="_blank" class="social-link">GitHub</a>
+    <a href="https://www.linkedin.com/in/anass-sidki" target="_blank" class="social-link">LinkedIn</a>
   </div>
   <div class="nav-badge"><span class="dot"></span>RECHERCHE STAGE PFE 2026</div>
 </nav>
@@ -119,15 +129,16 @@ footer{text-align:center;padding:2.5rem;font-family:'Space Mono',monospace;font-
 <div class="hero" id="hero">
   <div class="hero-tag">Ingénieur Informatique · EMSI Rabat</div>
   <h1 class="hero-name">Anass<br><span>SIDKI</span></h1>
-  <div class="hero-role">Développeur Full-Stack<span class="cursor"></span></div>
-  <p class="hero-desc">Élève Ingénieur à l'EMSI Rabat. Spécialisé en développement web, backend et architecture logicielle. À la recherche active d'un <strong>Stage de Fin d'Études (PFE)</strong>. Maîtrise des technologies Java, Python, C#, Django, Laravel et .NET.</p>
+  <div class="hero-role">Développeur Full-Stack & Certifié Java<span class="cursor"></span></div>
+  <p class="hero-desc">Élève Ingénieur à l'EMSI Rabat, **Oracle Certified Professional: Java SE 17 Developer**. Spécialisé en développement web, backend et architecture logicielle. À la recherche active d'un <strong>Stage de Fin d'Études (PFE)</strong>.</p>
   <div class="hero-btns">
     <button class="btn-p" onclick="document.getElementById('chat').scrollIntoView({behavior:'smooth'})">Discuter avec mon IA</button>
-    <button class="btn-s" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Voir mes projets</button>
+    <a href="https://github.com/sidkizh04" target="_blank" class="btn-s">GitHub</a>
+    <a href="https://www.linkedin.com/in/anass-sidki" target="_blank" class="btn-s">LinkedIn</a>
   </div>
   <div class="hero-stats">
     <div><span class="stat-num">6+</span><span class="stat-label">Projets</span></div>
-    <div><span class="stat-num">6+</span><span class="stat-label">Certifications</span></div>
+    <div><span class="stat-num">7+</span><span class="stat-label">Certifications</span></div>
     <div><span class="stat-num">3</span><span class="stat-label">Langues</span></div>
     <div><span class="stat-num">2</span><span class="stat-label">Stages Pro</span></div>
   </div>
@@ -135,7 +146,7 @@ footer{text-align:center;padding:2.5rem;font-family:'Space Mono',monospace;font-
 <div class="section" id="skills">
   <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">Compétences</h2><div class="sec-line"></div></div>
   <div class="skills-grid">
-    <div class="skill-card"><div class="skill-cat-label">LANGAGES</div><div class="tags"><span class="tag">Java</span><span class="tag">Python</span><span class="tag">C#</span><span class="tag">C++</span><span class="tag">PHP</span><span class="tag">JavaScript</span></div></div>
+    <div class="skill-card"><div class="skill-cat-label">LANGAGES</div><div class="tags"><span class="tag">Java SE 17 (OCP)</span><span class="tag">Python</span><span class="tag">C#</span><span class="tag">C++</span><span class="tag">PHP</span><span class="tag">JavaScript</span></div></div>
     <div class="skill-card"><div class="skill-cat-label">FRAMEWORKS</div><div class="tags"><span class="tag">Django</span><span class="tag">Laravel</span><span class="tag">.NET</span><span class="tag">Bootstrap</span><span class="tag">Swing</span><span class="tag">Node.js</span></div></div>
     <div class="skill-card"><div class="skill-cat-label">BASES DE DONNÉES</div><div class="tags"><span class="tag">MySQL</span><span class="tag">SQL Server</span><span class="tag">SQLite</span><span class="tag">NoSQL</span></div></div>
     <div class="skill-card"><div class="skill-cat-label">WEB & SYSTÈMES</div><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Linux</span><span class="tag">Windows</span></div></div>
@@ -146,7 +157,7 @@ footer{text-align:center;padding:2.5rem;font-family:'Space Mono',monospace;font-
   <div class="proj-grid">
     <div class="proj-card"><div class="proj-num">P01</div><div class="proj-name">Plateforme SAV avec Chatbot</div><div class="proj-desc">Système de suivi des réparations pour service après-vente, intégrant un chatbot RASA.</div><div class="stack"><span class="stag">Python</span><span class="stag">Django</span><span class="stag">MySQL</span><span class="stag">RASA</span><span class="stag">JS</span></div></div>
     <div class="proj-card"><div class="proj-num">P02</div><div class="proj-name">Logiciel Cabinet Médical</div><div class="proj-desc">Application bureau pour gestion des patients, RDV et ordonnances avec architecture POO robuste.</div><div class="stack"><span class="stag">C#</span><span class="stag">.NET</span><span class="stag">SQL Server</span></div></div>
-    <div class="proj-card"><div class="proj-num">P03</div><div class="proj-name">Jeu Pacman</div><div class="proj-desc">Réplique du jeu classique avec IA des fantômes via algorithmes de pathfinding.</div><div class="stack"><span class="stag">Java</span><span class="stag">Swing</span><span class="stag">JavaFX</span></div></div>
+    <div class="proj-card"><div class="proj-num">P03</div><div class="proj-name">Jeu Pacman</div><div class="proj-desc">Réplique du jeu classique avec IA des fantômes via algorithmes de pathfinding.</div><div class="stack"><span class="stag">Java 17</span><span class="stag">Swing</span><span class="stag">JavaFX</span></div></div>
     <div class="proj-card"><div class="proj-num">P04</div><div class="proj-name">EMSI-ECO Shop</div><div class="proj-desc">Site e-commerce de produits écologiques avec système de crédits.</div><div class="stack"><span class="stag">PHP</span><span class="stag">Laravel</span><span class="stag">MySQL</span></div></div>
     <div class="proj-card"><div class="proj-num">P05</div><div class="proj-name">App Météo Maroc</div><div class="proj-desc">Application météo dynamique avec données en temps réel pour les villes marocaines.</div><div class="stack"><span class="stag">JavaScript</span><span class="stag">Node.js</span><span class="stag">HTML/CSS</span></div></div>
     <div class="proj-card"><div class="proj-num">P06</div><div class="proj-name">Gestion École</div><div class="proj-desc">Système de gestion scolaire complet avec modules d'administration et de suivi.</div><div class="stack"><span class="stag">C++</span></div></div>
@@ -185,6 +196,11 @@ footer{text-align:center;padding:2.5rem;font-family:'Space Mono',monospace;font-
 <div class="section" id="certs">
   <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Certifications</h2><div class="sec-line"></div></div>
   <div class="certs-grid">
+    <div class="cert-card oracle">
+      <div class="cert-date oracle-date">CERTIFICATION OFFICIELLE</div>
+      <div class="cert-name">Oracle Certified Professional: Java SE 17 Developer</div>
+      <div class="cert-org">Oracle Corporation</div>
+    </div>
     <div class="cert-card"><div class="cert-date">NOV. 2024</div><div class="cert-name">The Unix Workbench</div><div class="cert-org">Johns Hopkins University</div></div>
     <div class="cert-card"><div class="cert-date">DÉC. 2024</div><div class="cert-name">Intro POO en C++</div><div class="cert-org">EPFL – Lausanne</div></div>
     <div class="cert-card"><div class="cert-date">DÉC. 2024</div><div class="cert-name">Interactivity with JavaScript</div><div class="cert-org">University of Michigan</div></div>
@@ -196,19 +212,19 @@ footer{text-align:center;padding:2.5rem;font-family:'Space Mono',monospace;font-
 <div id="chat">
   <div class="chat-inner">
     <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Discuter avec l'IA d'Anass</h2><div class="sec-line"></div></div>
-    <div class="chat-intro"><p>Assistant intelligent d'Anass. Posez vos questions sur son profil, ses stages, sa recherche de PFE ou sa disponibilité.</p></div>
+    <div class="chat-intro"><p>Assistant intelligent d'Anass. Posez vos questions sur son profil, sa certification Java SE 17, ses stages ou sa recherche de PFE.</p></div>
     <div class="quick-wrap">
       <button class="qbtn" onclick="askQ('Recherches-tu un stage PFE ?')">Recherche PFE</button>
+      <button class="qbtn" onclick="askQ('Parle-moi de ta certification Oracle Java 17')">Certif Java 17</button>
+      <button class="qbtn" onclick="askQ('Où trouver tes profils LinkedIn et GitHub ?')">LinkedIn / GitHub</button>
       <button class="qbtn" onclick="askQ('Parle-moi de ton stage chez Alexsys')">Stage Alexsys</button>
       <button class="qbtn" onclick="askQ('Parle-moi de ton stage à la TGR')">Stage TGR</button>
-      <button class="qbtn" onclick="askQ('Quelles sont tes motivations ?')">Motivations</button>
       <button class="qbtn" onclick="askQ('Comment te contacter ?')">Contact</button>
-      <button class="qbtn" onclick="askQ('Quelles langues parles-tu ?')">Langues</button>
     </div>
     <div class="chat-box" id="chatBox">
       <div class="msg">
         <div class="av av-bot">AI</div>
-        <div class="mc">Bonjour ! Je suis l'assistant d'<strong>Anass SIDKI</strong>. Je connais son parcours, ses expériences (TGR, Alexsys Solutions), ses compétences et sa recherche actuelle de Stage PFE. Posez-moi vos questions !</div>
+        <div class="mc">Bonjour ! Je suis l'assistant d'<strong>Anass SIDKI</strong>. Je connais sa certification <strong>Oracle Certified Professional Java SE 17</strong>, ses stages, ses projets et sa recherche de PFE. Posez-moi vos questions !</div>
       </div>
     </div>
     <div class="chat-form">
@@ -221,13 +237,25 @@ footer{text-align:center;padding:2.5rem;font-family:'Space Mono',monospace;font-
 <footer>
   <div style="margin-bottom:8px;font-size:14px;font-weight:600;font-family:'Syne',sans-serif;color:var(--text)">ANASS SIDKI</div>
   <span>Sidki20004@gmail.com</span> · <span>0678099824</span> · <span style="color:var(--cyan)">Témara, Maroc</span>
+  <div style="margin-top:8px;">
+    <a href="https://www.linkedin.com/in/anass-sidki" target="_blank">LinkedIn</a> · 
+    <a href="https://github.com/sidkizh04" target="_blank">GitHub</a>
+  </div>
   <div style="margin-top:8px;opacity:.4">© 2026 · Élève Ingénieur Informatique EMSI</div>
 </footer>
 <script>
 const KB = [
   {
+    keys: ['oracle','java','java 17','ocp','certification java','certif java'],
+    rep: "Anass est certifié <strong>Oracle Certified Professional: Java SE 17 Developer (OCP)</strong>. Cette certification officielle atteste de sa parfaite maîtrise des fonctionnalités modernes de Java, de la programmation orientée objet, de la gestion de la mémoire, de la concurrence et des bonnes pratiques de développement backend."
+  },
+  {
+    keys: ['linkedin','github','reseaux','réseaux','lien','profil'],
+    rep: "Voici les liens vers les profils officiels d'Anass :<br><br>💻 <strong>GitHub :</strong> <a href='https://github.com/sidkizh04' target='_blank' style='color:var(--cyan)'>github.com/sidkizh04</a><br>💼 <strong>LinkedIn :</strong> <a href='https://www.linkedin.com/in/anass-sidki' target='_blank' style='color:var(--cyan)'>linkedin.com/in/anass-sidki</a>"
+  },
+  {
     keys: ['disponib','stage','pfe','pfa','quand','libre','cherch','recherche','emploi'],
-    rep: "Je suis activement à la recherche d'un <strong>Stage de Fin d'Études (PFE) pour l'année 2026</strong>. Je vise des opportunités en développement logiciel, Web Full-Stack ou Backend (Java, Python, C#, Django, .NET, Laravel). Je suis disponible immédiatement et mobile sur Rabat, Casablanca ou en remote."
+    rep: "Je suis activement à la recherche d'un <strong>Stage de Fin d'Études (PFE) pour l'année 2026</strong>. En tant que certifié Oracle Java SE 17, je vise des opportunités en développement logiciel, Web Full-Stack ou Backend (Java, Spring/Backend, Python, C#, Django, .NET, Laravel). Je suis mobile sur Rabat, Casablanca ou en remote."
   },
   {
     keys: ['alexsys','alexis','alexys'],
@@ -235,7 +263,7 @@ const KB = [
   },
   {
     keys: ['contact','email','téléphone','telephone','joindre','appel','mail','numéro','numero'],
-    rep: "Vous pouvez contacter Anass directement :<br><br>📧 <strong>Sidki20004@gmail.com</strong><br>📱 <strong>0678099824</strong><br>📍 Témara, Maroc<br>💼 LinkedIn : @ANASS SIDKI"
+    rep: "Vous pouvez contacter Anass directement :<br><br>📧 <strong>Sidki20004@gmail.com</strong><br>📱 <strong>0678099824</strong><br>📍 Témara, Maroc<br>💼 LinkedIn : <a href='https://www.linkedin.com/in/anass-sidki' target='_blank' style='color:var(--cyan)'>Anass SIDKI</a><br>💻 GitHub : <a href='https://github.com/sidkizh04' target='_blank' style='color:var(--cyan)'>sidkizh04</a>"
   },
   {
     keys: ['motiv','objectif','ambition','carrière','carriere','futur','rêve','reve','envie','passio'],
@@ -243,7 +271,7 @@ const KB = [
   },
   {
     keys: ['loisir','hobby','perso','caractère','caractere','sport','voyage','personnali','humain','toi'],
-    rep: "En dehors du code, j'aime le <strong>sport</strong>, les <strong>voyages</strong> et l'actualité tech. Je suis curieux, autonome et à l'aise dans le travail en équipe. Mes diverses certifications académiques montrent également ma volonté permanente de monter en compétences."
+    rep: "En dehors du code, j'aime le <strong>sport</strong>, les <strong>voyages</strong> et l'actualité tech. Je suis curieux, autonome et à l'aise dans le travail en équipe. Mes diverses certifications académiques et professionnelles (Oracle) montrent également ma volonté permanente de monter en compétences."
   },
   {
     keys: ['tgr','trésorerie','tresorerie','stage','expérience','experience','professionnel','travail'],
@@ -255,11 +283,11 @@ const KB = [
   },
   {
     keys: ['compétence','competence','technolog','stack','langag','java','python','django','laravel','net','php','javascript','c#','c++'],
-    rep: "Anass maîtrise :<br><strong>Langages :</strong> Java, Python, C#, C++, PHP, JavaScript<br><strong>Frameworks :</strong> Django, Laravel, .NET, Bootstrap, Node.js<br><strong>BDD :</strong> MySQL, SQL Server, SQLite, NoSQL<br><strong>Systèmes :</strong> Linux, Windows<br><br>Il s'appuie sur deux stages professionnels (TGR, Alexsys Solutions) et plus de 6 projets concrets."
+    rep: "Anass maîtrise :<br><strong>Langages :</strong> Java SE 17 (Certifié OCP), Python, C#, C++, PHP, JavaScript<br><strong>Frameworks :</strong> Django, Laravel, .NET, Bootstrap, Node.js<br><strong>BDD :</strong> MySQL, SQL Server, SQLite, NoSQL<br><strong>Systèmes :</strong> Linux, Windows"
   },
   {
     keys: ['projet','pacman','médical','medical','emsi-eco','météo','meteo','école','ecole','sav','chatbot','rasa'],
-    rep: "Anass a réalisé plusieurs projets clés :<br>• Plateforme SAV avec chatbot RASA (Django/MySQL)<br>• Logiciel de cabinet médical (C#/.NET)<br>• Jeu Pacman avec IA (Java/Swing)<br>• EMSI-ECO e-commerce (PHP/Laravel)<br>• App météo Maroc (JavaScript/Node.js)<br>• Système de gestion d'école (C++)"
+    rep: "Anass a réalisé plusieurs projets clés :<br>• Plateforme SAV avec chatbot RASA (Django/MySQL)<br>• Logiciel de cabinet médical (C#/.NET)<br>• Jeu Pacman avec IA (Java 17/Swing)<br>• EMSI-ECO e-commerce (PHP/Laravel)<br>• App météo Maroc (JavaScript/Node.js)<br>• Système de gestion d'école (C++)"
   },
   {
     keys: ['formation','diplôme','diplome','emsi','école','ecole','bac','étude','etude','ingénieur','ingenieur','prépas','prepas'],
@@ -267,11 +295,11 @@ const KB = [
   },
   {
     keys: ['certif','certifications','ibm','polytechnique','michigan','hopkins','epfl','hkust'],
-    rep: "Anass possède 6 certifications internationales de renom :<br>• Johns Hopkins (Unix)<br>• EPFL (POO C++)<br>• Univ. Michigan (JavaScript)<br>• IBM (Python Data Science & AI)<br>• HKUST (Software Engineering)<br>• École Polytechnique (Recherche Documentaire)"
+    rep: "Anass possède 7 certifications internationales :<br>🏆 <strong>Oracle Certified Professional: Java SE 17 Developer</strong><br>• Johns Hopkins (Unix)<br>• EPFL (POO C++)<br>• Univ. Michigan (JavaScript)<br>• IBM (Python Data Science & AI)<br>• HKUST (Software Engineering)<br>• École Polytechnique (Recherche Documentaire)"
   },
   {
     keys: ['bonjour','salut','hello','bonsoir','hi','hey'],
-    rep: "Bonjour ! Ravi de vous accueillir. Je suis l'assistant d'<strong>Anass SIDKI</strong>. Si vous recherchez un élève ingénieur pour un <strong>Stage PFE</strong> ou souhaitez en savoir plus sur ses compétences, n'hésitez pas !"
+    rep: "Bonjour ! Ravi de vous accueillir. Je suis l'assistant d'<strong>Anass SIDKI</strong> (Certifié Oracle Java SE 17). N'hésitez pas à me poser vos questions !"
   },
   {
     keys: ['merci','thanks','parfait','super','excellent','bravo'],
